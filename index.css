@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+body {
+    font-family: Rubik, sans-serif;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("https://t3.ftcdn.net/jpg/03/91/46/10/360_F_391461057_5P0BOWl4lY442Zoo9rzEeJU0S2c1WDZR.jpg");
+}
+
+img {
+    position: absolute;
+    width: 100%;
+    height: inherit;
+    opacity: 90%;
+}
+
+h1 {
+    width: 600px;
+    border: 6px solid darkseagreen;
+    border-radius: 10px;
+    margin-left: 25%;
+    margin-bottom: 10%;
+    color: firebrick;
+
+}
+
+h2 {
+    width: 400px;
+    border: 6px solid darkseagreen;
+    border-radius: 10px;
+    margin-left: 33%;
+    margin-bottom: 3%;
+
+}
+
+
+.tictac {
+    color: dodgerblue;
+}
+
+.four {
+    color: gold;
+}
+
+.wordle {
+    color: aqua;
+}
+
+.snake {
+    color: greenyellow;
+}
+
+.pong {
+    color: cadetblue;
+}
+
+h2:hover {
+    background-color: black;
+}
