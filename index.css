@@ -35,10 +35,10 @@ h2 {
     width: 400px;
     border: 6px solid white;
     border-radius: 10px;
-    margin-left: 33%;
     margin-bottom: 3%;
     background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 0 10px 10px 10px rgba(255, 255, 255, 0.1);
+    display: inline-block;
 
 }
 
@@ -46,6 +46,7 @@ h2 {
 .tictac {
     color: dodgerblue;
 }
+
 
 .four {
     color: gold;
@@ -63,11 +64,15 @@ h2 {
     color: cadetblue;
 }
 
+.scroll {
+    color: burlywood;
+}
+
 .quote {
     color: white;
 }
 
-h2:hover {
+h2:active {
     filter: brightness(160%);
     box-shadow: 0 0.1 rgba(255, 255, 255, 0.65);
     transform: translate(0, 0.3rem);
