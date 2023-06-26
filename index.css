@@ -76,6 +76,10 @@ h2 {
     color: rgb(37, 37, 37);
 }
 
+.chess {
+    color: #02BA0F;
+}
+
 h2:active {
     filter: brightness(160%);
     box-shadow: 0 0.1 rgba(255, 255, 255, 0.65);
