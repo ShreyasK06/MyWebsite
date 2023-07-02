@@ -80,8 +80,12 @@ h2 {
     color: #02BA0F;
 }
 
+.joke {
+    color: #45badd;
+}
+
 h2:active {
     filter: brightness(160%);
     box-shadow: 0 0.1 rgba(255, 255, 255, 0.65);
-    transform: translate(0, 0.3rem);
+    transform: scale(95%);
 }
