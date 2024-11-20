@@ -84,6 +84,10 @@ h2 {
     color: #45badd;
 }
 
+.movieSearch {
+    color: #0404c2;
+}
+
 h2:active {
     filter: brightness(160%);
     box-shadow: 0 0.1 rgba(255, 255, 255, 0.65);
