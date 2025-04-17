@@ -2,52 +2,326 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>WEBSITE</title>
-        <link rel="icon" type="image/png"
-                href="https://www.google.com/s2/u/0/favicons?domain=https://www.samsung.com/us/">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-                integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-                crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shreyas's Portfolio - Web Developer and Software Engineer">
+    <meta name="keywords" content="portfolio, web development, software engineer, projects">
+    <title>Shreyas K | Portfolio</title>
+    <link rel="icon" type="image/png" href="https://www.google.com/s2/u/0/favicons?domain=https://www.samsung.com/us/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-        <h1>SHREYAS'S WEBSITE </h1>
-        <h2 id="c"> <a class="four" href="https://shreyask06.github.io/ConnectFourJS/" target="_parent"
-                        rel="noopener noreferrer">CONNECT FOUR</a></h2>
-        <h2 id="t"> <a class="tictac" href="https://shreyask06.github.io/TicTacToeJS/" target="_parent"
-                        rel="noopener noreferrer">TIC-TAC-TOE</a></h2>
-        <h2 id="w"> <a class="wordle" href="https://shreyask06.github.io/WordleJS/" target="_parent"
-                        rel="noopener noreferrer">WORDLE</a>
-        </h2>
-        <h2 id="m"> <a class="snake" href="https://shreyask06.github.io/SnakeJS/" target="_parent"
-                        rel="noopener noreferrer">SNAKE</a>
-        </h2>
-        <h2 id="p"> <a class="pong" href="https://shreyask06.github.io/PongJS/" target="_parent"
-                        rel="noopener noreferrer">PONG</a>
-        </h2>
-        <h2 id="s"> <a class="scroll" href="https://shreyask06.github.io/infiniteScrollJS/" target="_parent"
-                        rel="noopener noreferrer">INFINITE SCROLL</a>
-        </h2>
-        <h2 id="q"> <a class="quote" href="https://shreyask06.github.io/QuoteGenerator/" target="_parent"
-                        rel="noopener noreferrer">QUOTE GENERATOR</a>
-        </h2>
-        <h2 id="pI"> <a class="picture" href="https://shreyask06.github.io/pictureInPictureJS/" target="_parent"
-                        rel="noopener noreferrer">PICTURE-IN-PICTURE</a>
-        </h2>
-        <h2 id="cH"> <a class="chess" href="https://shreyask06.github.io/chessPuzzlesJS/" target="_parent"
-                        rel="noopener noreferrer">CHESS</a>
-        </h2>
-        <h2 id="j"> <a class="joke" href="https://shreyask06.github.io/jokerTellerJS/" target="_parent"
-                        rel="noopener noreferrer">JOKE TELLER</a>
-        </h2>
-        <h2 id="m"><a class="movieSearch" href="https://shreyask06.github.io/movieSearchReactJS" target="_parent">
-                MOVIE SEARCH
-        </a></h2>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">SK</div>
+        <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">SHREYAS K</h1>
+            <p class="subtitle animate__animated animate__fadeInUp">Web Developer & Software Engineer</p>
+            <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-1s">
+                <a href="#projects" class="btn primary-btn">View Projects</a>
+                <a href="#contact" class="btn secondary-btn">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate web developer and software engineer with a focus on creating interactive and user-friendly applications. I enjoy building projects that solve real-world problems and provide great user experiences.</p>
+                    <div class="skills">
+                        <h3>My Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="game">Games</button>
+                <button class="filter-btn" data-filter="tool">Tools</button>
+                <button class="filter-btn" data-filter="app">Apps</button>
+            </div>
+            <div class="projects-grid">
+                <!-- Stock Tip Project -->
+                <div class="project-card" data-category="app">
+                    <div class="project-img">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Stock Tip</h3>
+                        <p class="project-desc">A stock market analysis and recommendation tool.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/stockTip" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RPSCV Project -->
+                <div class="project-card" data-category="game">
+                    <div class="project-img">
+                        <i class="fas fa-hand-rock"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">RPSCV</h3>
+                        <p class="project-desc">Rock Paper Scissors with computer vision.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/RPSCV/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connect Four -->
+                <div class="project-card" data-category="game">
+                    <div class="project-img">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Connect Four</h3>
+                        <p class="project-desc">Classic Connect Four game built with JavaScript.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/ConnectFourJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tic-Tac-Toe -->
+                <div class="project-card" data-category="game">
+                    <div class="project-img">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Tic-Tac-Toe</h3>
+                        <p class="project-desc">Interactive Tic-Tac-Toe game with JavaScript.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/TicTacToeJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wordle -->
+                <div class="project-card" data-category="game">
+                    <div class="project-img">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Wordle</h3>
+                        <p class="project-desc">Word guessing game inspired by Wordle.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/WordleJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Snake -->
+                <div class="project-card" data-category="game">
+                    <div class="project-img">
+                        <i class="fas fa-snake"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Snake</h3>
+                        <p class="project-desc">Classic Snake game built with JavaScript.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/SnakeJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pong -->
+                <div class="project-card" data-category="game">
+                    <div class="project-img">
+                        <i class="fas fa-table-tennis"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Pong</h3>
+                        <p class="project-desc">Classic Pong game implementation.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/PongJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infinite Scroll -->
+                <div class="project-card" data-category="tool">
+                    <div class="project-img">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Infinite Scroll</h3>
+                        <p class="project-desc">Demonstration of infinite scrolling technique.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/infiniteScrollJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quote Generator -->
+                <div class="project-card" data-category="tool">
+                    <div class="project-img">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Quote Generator</h3>
+                        <p class="project-desc">Random inspirational quote generator.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/QuoteGenerator/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Picture-in-Picture -->
+                <div class="project-card" data-category="tool">
+                    <div class="project-img">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Picture-in-Picture</h3>
+                        <p class="project-desc">Implementation of the Picture-in-Picture API.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/pictureInPictureJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chess -->
+                <div class="project-card" data-category="game">
+                    <div class="project-img">
+                        <i class="fas fa-chess"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Chess</h3>
+                        <p class="project-desc">Chess puzzles and challenges.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/chessPuzzlesJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Joke Teller -->
+                <div class="project-card" data-category="tool">
+                    <div class="project-img">
+                        <i class="fas fa-laugh"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Joke Teller</h3>
+                        <p class="project-desc">Random joke generator with text-to-speech.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/jokerTellerJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie Search -->
+                <div class="project-card" data-category="app">
+                    <div class="project-img">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Movie Search</h3>
+                        <p class="project-desc">Movie search application built with React.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/movieSearchReactJS" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>email@example.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <p><a href="https://github.com/shreyask06" target="_blank" rel="noopener noreferrer">github.com/shreyask06</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <p><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Shreyas K. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 
 </html>
