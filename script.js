@@ -128,52 +128,40 @@ function animateSectionsOnScroll() {
 
         if (sectionTop < windowHeight * 0.75) {
             section.classList.add('animate');
-
-            // Animate project cards with staggered delay
-            if (section.id === 'projects') {
-                const cards = section.querySelectorAll('.project-card');
-                cards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 100 * index);
-                });
-            }
-
-            // Animate skill tags with staggered delay
-            if (section.id === 'about') {
-                const skillTags = section.querySelectorAll('.skill-tag');
-                skillTags.forEach((tag, index) => {
-                    setTimeout(() => {
-                        tag.style.opacity = '1';
-                        tag.style.transform = 'translateY(0)';
-                    }, 100 * index);
-                });
-            }
         }
     });
+
+    // Also animate footer when it comes into view
+    const footer = document.querySelector('.footer');
+    if (footer) {
+        const footerTop = footer.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (footerTop < windowHeight * 0.9) {
+            footer.classList.add('animate');
+        }
+    }
 }
 
 // Initialize animations
 function initAnimations() {
-    // Hide project cards initially
-    projectCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
+    // Trigger hero section animation immediately
+    const heroSection = document.getElementById('home');
+    if (heroSection) {
+        // The hero section already has its own CSS animations
+        // We just need to make sure it's visible
+        heroSection.style.opacity = '1';
+    }
 
-    // Hide skill tags initially
-    document.querySelectorAll('.skill-tag').forEach(tag => {
-        tag.style.opacity = '0';
-        tag.style.transform = 'translateY(20px)';
-        tag.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-
-    // Trigger initial animations
+    // Trigger initial animations for sections in view
     setTimeout(() => {
         animateSectionsOnScroll();
     }, 100);
+
+    // Add scroll trigger for animations
+    window.addEventListener('scroll', () => {
+        animateSectionsOnScroll();
+    });
 }
 
 // Add hover animations to project cards
