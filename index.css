@@ -220,6 +220,18 @@ section {
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7));
+    animation: heroReveal 1.5s ease-out forwards;
+}
+
+@keyframes heroReveal {
+    0% {
+        opacity: 0;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    100% {
+        opacity: 1;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
 }
 
 .hero::before {
@@ -275,6 +287,20 @@ section {
     padding: 0 20px;
     position: relative;
     z-index: 2;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: contentFadeIn 1s ease-out 0.5s forwards;
+}
+
+@keyframes contentFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero h1 {
@@ -571,32 +597,81 @@ section {
 
 /* Stock images for different project categories */
 .project-card[data-category="app"] .project-img::before {
-    background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+    background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
 }
 
 .project-card[data-category="game"] .project-img::before {
-    background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+    background-image: url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
 }
 
 .project-card[data-category="tool"] .project-img::before {
-    background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+    background-image: url('https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
 }
 
 /* Specific project images */
+/* Stock Tip */
 .project-card:nth-child(1) .project-img::before {
-    background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+    background-image: url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
 }
 
+/* RPSCV */
 .project-card:nth-child(2) .project-img::before {
-    background-image: url('https://images.unsplash.com/photo-1535378917042-10a22c95931a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+    background-image: url('https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
 }
 
+/* Connect Four */
 .project-card:nth-child(3) .project-img::before {
-    background-image: url('https://images.unsplash.com/photo-1611032065006-77af339f9ba8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+    background-image: url('https://images.unsplash.com/photo-1611996575749-79a3a250f948?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
 }
 
+/* Tic-Tac-Toe */
 .project-card:nth-child(4) .project-img::before {
-    background-image: url('https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+    background-image: url('https://images.unsplash.com/photo-1611309454921-16cef3e3a5c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+}
+
+/* Wordle */
+.project-card:nth-child(5) .project-img::before {
+    background-image: url('https://images.unsplash.com/photo-1591492654773-6c5a4e4eff3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+}
+
+/* Snake */
+.project-card:nth-child(6) .project-img::before {
+    background-image: url('https://images.unsplash.com/photo-1567448400815-59d5f6d93e7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+}
+
+/* Pong */
+.project-card:nth-child(7) .project-img::before {
+    background-image: url('https://images.unsplash.com/photo-1559480671-5c4f9f2a9273?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+}
+
+/* Infinite Scroll */
+.project-card:nth-child(8) .project-img::before {
+    background-image: url('https://images.unsplash.com/photo-1550645612-83f5d594b671?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+}
+
+/* Quote Generator */
+.project-card:nth-child(9) .project-img::before {
+    background-image: url('https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+}
+
+/* Picture-in-Picture */
+.project-card:nth-child(10) .project-img::before {
+    background-image: url('https://images.unsplash.com/photo-1626379953822-baec19c3accd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+}
+
+/* Chess */
+.project-card:nth-child(11) .project-img::before {
+    background-image: url('https://images.unsplash.com/photo-1586165368502-1bad197a6461?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+}
+
+/* Joke Teller */
+.project-card:nth-child(12) .project-img::before {
+    background-image: url('https://images.unsplash.com/photo-1527224857830-43a7acc85260?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+}
+
+/* Movie Search */
+.project-card:nth-child(13) .project-img::before {
+    background-image: url('https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
 }
 
 .project-card:hover .project-img::before {
