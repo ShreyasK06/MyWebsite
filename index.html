@@ -17,6 +17,12 @@
 </head>
 
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">SK</div>
@@ -39,7 +45,7 @@
         <div class="particles" id="particles"></div>
         <div class="hero-content">
             <h1 class="animate__animated animate__fadeInDown" data-text="SHREYAS K">SHREYAS K</h1>
-            <p class="subtitle animate__animated animate__fadeInUp">Web Developer & Software Engineer</p>
+            <p class="subtitle animate__animated animate__fadeInUp"><span id="typewriter"></span><span class="typewriter-cursor">|</span></p>
             <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-1s">
                 <a href="#projects" class="btn primary-btn">View Projects</a>
                 <a href="#contact" class="btn secondary-btn">Contact Me</a>
@@ -83,7 +89,35 @@
                 <button class="filter-btn" data-filter="app">Apps</button>
             </div>
             <div class="projects-grid">
-                <!-- Stock Tip Project -->
+                <!-- MathBoard -->
+                <div class="project-card" data-category="tool">
+                    <div class="project-img">
+                        <i class="fas fa-chalkboard"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">MathBoard</h3>
+                        <p class="project-desc">Interactive math whiteboard for visualizing equations and solving problems.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/mathboard/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chess -->
+                <div class="project-card" data-category="game">
+                    <div class="project-img">
+                        <i class="fas fa-chess"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Chess</h3>
+                        <p class="project-desc">Chess puzzles and challenges.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/chessPuzzlesJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Tip -->
                 <div class="project-card" data-category="app">
                     <div class="project-img">
                         <i class="fas fa-chart-line"></i>
@@ -97,7 +131,7 @@
                     </div>
                 </div>
 
-                <!-- RPSCV Project -->
+                <!-- RPSCV -->
                 <div class="project-card" data-category="game">
                     <div class="project-img">
                         <i class="fas fa-hand-rock"></i>
@@ -107,6 +141,34 @@
                         <p class="project-desc">Rock Paper Scissors with computer vision.</p>
                         <div class="project-links">
                             <a href="https://shreyask06.github.io/RPSCV/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Picture-in-Picture -->
+                <div class="project-card" data-category="tool">
+                    <div class="project-img">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Picture-in-Picture</h3>
+                        <p class="project-desc">Implementation of the Picture-in-Picture API.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/pictureInPictureJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wordle -->
+                <div class="project-card" data-category="game">
+                    <div class="project-img">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Wordle</h3>
+                        <p class="project-desc">Word guessing game inspired by Wordle.</p>
+                        <div class="project-links">
+                            <a href="https://shreyask06.github.io/WordleJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
                         </div>
                     </div>
                 </div>
@@ -135,20 +197,6 @@
                         <p class="project-desc">Interactive Tic-Tac-Toe game with JavaScript.</p>
                         <div class="project-links">
                             <a href="https://shreyask06.github.io/TicTacToeJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Wordle -->
-                <div class="project-card" data-category="game">
-                    <div class="project-img">
-                        <i class="fas fa-font"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Wordle</h3>
-                        <p class="project-desc">Word guessing game inspired by Wordle.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/WordleJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
                         </div>
                     </div>
                 </div>
@@ -194,38 +242,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                <!-- Picture-in-Picture -->
-                <div class="project-card" data-category="tool">
-                    <div class="project-img">
-                        <i class="fas fa-image"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Picture-in-Picture</h3>
-                        <p class="project-desc">Implementation of the Picture-in-Picture API.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/pictureInPictureJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chess -->
-                <div class="project-card" data-category="game">
-                    <div class="project-img">
-                        <i class="fas fa-chess"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Chess</h3>
-                        <p class="project-desc">Chess puzzles and challenges.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/chessPuzzlesJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-
 
                 <!-- Movie Search -->
                 <div class="project-card" data-category="app">

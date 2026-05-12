@@ -9,6 +9,8 @@ const sections = document.querySelectorAll('section');
 const navbar = document.querySelector('.navbar');
 const themeToggle = document.getElementById('themeToggle');
 const particlesContainer = document.getElementById('particles');
+const scrollProgressBar = document.getElementById('scrollProgress');
+const cursorGlow = document.getElementById('cursorGlow');
 
 // Toggle mobile navigation
 navToggle.addEventListener('click', () => {
@@ -22,7 +24,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Back to top button visibility
+// Back to top button visibility + scroll progress
 window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
         backToTopBtn.classList.add('visible');
@@ -37,8 +39,27 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('scrolled');
     }
 
+    // Update scroll progress bar
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = (scrollTop / scrollHeight) * 100;
+    if (scrollProgressBar) scrollProgressBar.style.width = scrollPercent + '%';
+
     // Animate sections on scroll
     animateSectionsOnScroll();
+});
+
+// Cursor glow tracking
+document.addEventListener('mousemove', (e) => {
+    if (cursorGlow) {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
+        cursorGlow.style.opacity = '1';
+    }
+});
+
+document.addEventListener('mouseleave', () => {
+    if (cursorGlow) cursorGlow.style.opacity = '0';
 });
 
 // Scroll to top when clicking the back to top button
@@ -251,11 +272,31 @@ function loadThemePreference() {
     }
 }
 
+// Typewriter effect
+function typewriter(elementId, text, speed, startDelay) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    let i = 0;
+    setTimeout(() => {
+        const timer = setInterval(() => {
+            if (i < text.length) {
+                el.textContent += text[i];
+                i++;
+            } else {
+                clearInterval(timer);
+            }
+        }, speed);
+    }, startDelay);
+}
+
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initAnimations();
     createParticles();
     loadThemePreference();
+
+    // Typewriter for subtitle (delay so hero fade-in completes first)
+    typewriter('typewriter', 'Web Developer & Software Engineer', 55, 800);
 
     // Add animation classes to project cards
     projectCards.forEach((card, index) => {
