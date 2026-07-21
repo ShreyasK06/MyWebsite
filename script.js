@@ -1,306 +1,315 @@
-// DOM Elements
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.querySelector('.nav-links');
-const backToTopBtn = document.getElementById('backToTop');
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-const contactForm = document.getElementById('contactForm');
-const sections = document.querySelectorAll('section');
-const navbar = document.querySelector('.navbar');
-const themeToggle = document.getElementById('themeToggle');
-const particlesContainer = document.getElementById('particles');
-const scrollProgressBar = document.getElementById('scrollProgress');
-const cursorGlow = document.getElementById('cursorGlow');
 
-// Toggle mobile navigation
-navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+// ---------- Loading screen ----------
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const loader = document.getElementById('loader');
+    if (loader) loader.classList.add('done');
+    // Trigger name glitch after loader fades
+    setTimeout(triggerGlitch, 400);
+  }, 1500);
 });
 
-// Close mobile navigation when clicking a link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-    });
-});
+function triggerGlitch() {
+  document.querySelectorAll('.glitch').forEach(el => {
+    el.classList.add('glitching');
+    setTimeout(() => el.classList.remove('glitching'), 1300);
+  });
+}
 
-// Back to top button visibility + scroll progress
+// ---------- Nav scrolled state ----------
+const nav = document.querySelector('.nav');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
-    }
-
-    // Add scrolled class to navbar
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-
-    // Update scroll progress bar
-    const scrollTop = document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = (scrollTop / scrollHeight) * 100;
-    if (scrollProgressBar) scrollProgressBar.style.width = scrollPercent + '%';
-
-    // Animate sections on scroll
-    animateSectionsOnScroll();
+  nav.classList.toggle('scrolled', window.scrollY > 20);
 });
 
-// Cursor glow tracking
-document.addEventListener('mousemove', (e) => {
-    if (cursorGlow) {
-        cursorGlow.style.left = e.clientX + 'px';
-        cursorGlow.style.top = e.clientY + 'px';
-        cursorGlow.style.opacity = '1';
-    }
+// ---------- Mobile toggle ----------
+document.getElementById('navToggle').addEventListener('click', () => {
+  nav.classList.toggle('open');
 });
+document.querySelectorAll('.nav-links a').forEach(a =>
+  a.addEventListener('click', () => nav.classList.remove('open'))
+);
 
-document.addEventListener('mouseleave', () => {
-    if (cursorGlow) cursorGlow.style.opacity = '0';
-});
-
-// Scroll to top when clicking the back to top button
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+// ---------- Nav sliding underline ----------
+const navLinks = document.getElementById('navLinks');
+const navUnderline = document.getElementById('navUnderline');
+if (navLinks && navUnderline) {
+  const anchors = navLinks.querySelectorAll('a');
+  anchors.forEach(a => {
+    a.addEventListener('mouseenter', () => {
+      const rect = a.getBoundingClientRect();
+      const parentRect = navLinks.getBoundingClientRect();
+      navUnderline.style.left = (rect.left - parentRect.left) + 'px';
+      navUnderline.style.width = rect.width + 'px';
+      navUnderline.classList.add('visible');
     });
-});
-
-// Project filtering
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterBtns.forEach(b => b.classList.remove('active'));
-
-        // Add active class to clicked button
-        btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-
-        // Filter projects
-        projectCards.forEach(card => {
-            const category = card.getAttribute('data-category');
-
-            if (filter === 'all' || filter === category) {
-                card.style.display = 'flex';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 100);
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.display = 'none';
-                }, 300);
-            }
-        });
-    });
-});
-
-// Contact form submission (placeholder)
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-
-        // Here you would typically send the form data to a server
-        // For now, just log it and show a success message
-        console.log('Form submitted:', { name, email, message });
-
-        // Reset form
-        contactForm.reset();
-
-        // Show success message (you could create a more sophisticated notification)
-        alert('Thank you for your message! I will get back to you soon.');
-    });
+  });
+  navLinks.addEventListener('mouseleave', () => {
+    navUnderline.classList.remove('visible');
+  });
 }
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+// ---------- Flowing mesh grid ----------
+(function flowingMesh() {
+  const canvas = document.getElementById('particleCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const COLS = 25, ROWS = 15;
+  const mouse = { x: -9999, y: -9999 };
+  let w, h, cellW, cellH;
 
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    cellW = w / (COLS - 1);
+    cellH = h / (ROWS - 1);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
 
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 70, // Adjust for navbar height
-                behavior: 'smooth'
-            });
+  // Color palette cycling: deep blue -> purple -> pink -> cyan
+  const palette = [
+    [56, 96, 220],    // deep blue
+    [167, 139, 250],  // purple
+    [244, 114, 182],  // pink
+    [125, 211, 252]   // cyan
+  ];
+  function paletteAt(t) {
+    const n = palette.length;
+    const scaled = (t % 1 + 1) % 1 * n;
+    const i = Math.floor(scaled);
+    const f = scaled - i;
+    const a = palette[i];
+    const b = palette[(i + 1) % n];
+    return [
+      a[0] + (b[0] - a[0]) * f,
+      a[1] + (b[1] - a[1]) * f,
+      a[2] + (b[2] - a[2]) * f
+    ];
+  }
+
+  const start = performance.now();
+  const points = new Array(COLS * ROWS);
+
+  function step(now) {
+    const t = (now - start) / 1000;
+    ctx.clearRect(0, 0, w, h);
+
+    // Compute point positions
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const baseX = c * cellW;
+        const baseY = r * cellH;
+        // Sine wave displacements with position-based phase offsets
+        const dx = Math.sin(t * 0.7 + c * 0.35 + r * 0.22) * 18
+                 + Math.cos(t * 0.4 + r * 0.5) * 10;
+        const dy = Math.cos(t * 0.6 + r * 0.4 + c * 0.18) * 18
+                 + Math.sin(t * 0.5 + c * 0.3) * 10;
+        let px = baseX + dx;
+        let py = baseY + dy;
+
+        // Mouse repulsion within 150px, max 30px push
+        const mdx = px - mouse.x;
+        const mdy = py - mouse.y;
+        const md2 = mdx * mdx + mdy * mdy;
+        if (md2 < 150 * 150 && md2 > 0.01) {
+          const md = Math.sqrt(md2);
+          const push = (1 - md / 150) * 30;
+          px += (mdx / md) * push;
+          py += (mdy / md) * push;
         }
-    });
+        points[r * COLS + c] = { x: px, y: py };
+      }
+    }
+
+    // Gradient color cycling over time
+    const rgb = paletteAt(t * 0.05);
+    const rgbStr = `${Math.round(rgb[0])},${Math.round(rgb[1])},${Math.round(rgb[2])}`;
+    ctx.lineWidth = 1;
+
+    // Reference "rest" distances for opacity mapping
+    const restH = cellW;
+    const restV = cellH;
+
+    // Horizontal connections
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS - 1; c++) {
+        const a = points[r * COLS + c];
+        const b = points[r * COLS + c + 1];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        // Closer = more opaque
+        const ratio = Math.min(d / (restH * 1.8), 1);
+        const alpha = (1 - ratio) * 0.55 + 0.05;
+        ctx.strokeStyle = `rgba(${rgbStr},${alpha.toFixed(3)})`;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+    // Vertical connections
+    for (let r = 0; r < ROWS - 1; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const a = points[r * COLS + c];
+        const b = points[(r + 1) * COLS + c];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        const ratio = Math.min(d / (restV * 1.8), 1);
+        const alpha = (1 - ratio) * 0.55 + 0.05;
+        ctx.strokeStyle = `rgba(${rgbStr},${alpha.toFixed(3)})`;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+})();
+
+// ---------- Typewriter ----------
+const words = ['think', 'see', 'learn', 'play', 'compute', 'help'];
+const typeEl = document.getElementById('typeTarget');
+let wi = 0, ci = 0, del = false;
+function type() {
+  const w = words[wi];
+  typeEl.textContent = w.slice(0, ci);
+  if (!del) {
+    ci++;
+    if (ci > w.length) { del = true; setTimeout(type, 1400); return; }
+    setTimeout(type, 90);
+  } else {
+    ci--;
+    if (ci < 0) { del = false; wi = (wi + 1) % words.length; setTimeout(type, 200); return; }
+    setTimeout(type, 45);
+  }
+}
+type();
+
+// ---------- Reveal on load ----------
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), 1600 + i * 100);
+  });
 });
 
-// Animate sections when they come into view
-function animateSectionsOnScroll() {
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if (sectionTop < windowHeight * 0.75) {
-            section.classList.add('animate');
-        }
-    });
-
-    // Also animate footer when it comes into view
-    const footer = document.querySelector('.footer');
-    if (footer) {
-        const footerTop = footer.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if (footerTop < windowHeight * 0.9) {
-            footer.classList.add('animate');
-        }
+// ---------- IntersectionObserver for sections ----------
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in-view');
+      io.unobserve(e.target);
     }
-}
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
-// Initialize animations
-function initAnimations() {
-    // Trigger hero section animation immediately
-    const heroSection = document.getElementById('home');
-    if (heroSection) {
-        // The hero section already has its own CSS animations
-        // We just need to make sure it's visible
-        heroSection.style.opacity = '1';
-    }
+document.querySelectorAll('.section-head, .skill-group, .about-copy, .about-side, .contact-card')
+  .forEach(el => io.observe(el));
 
-    // Trigger initial animations for sections in view
-    setTimeout(() => {
-        animateSectionsOnScroll();
-    }, 100);
-
-    // Add scroll trigger for animations
-    window.addEventListener('scroll', () => {
-        animateSectionsOnScroll();
-    });
-}
-
-// Add hover animations to project cards
-projectCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        const icon = card.querySelector('.project-img i');
-        icon.style.animation = 'pulse 1s infinite';
-    });
-
-    card.addEventListener('mouseleave', () => {
-        const icon = card.querySelector('.project-img i');
-        icon.style.animation = 'none';
-    });
+document.querySelectorAll('.skill-group').forEach((c, i) => {
+  c.style.transitionDelay = `${i * 80}ms`;
+});
+document.querySelectorAll('.contact-card').forEach((c, i) => {
+  c.style.transitionDelay = `${i * 80}ms`;
 });
 
-// Theme toggle functionality
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-    themeToggle.classList.toggle('light-mode');
+// ---------- Scroll-reveal for project cards ----------
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const delay = parseInt(e.target.dataset.flipDelay || 0, 10);
+    setTimeout(() => e.target.classList.add('flipped'), delay);
+    cardObserver.unobserve(e.target);
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    // Change icon based on theme
-    const icon = themeToggle.querySelector('i');
-    if (document.body.classList.contains('light-theme')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    }
-
-    // Save theme preference
-    const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
-    localStorage.setItem('theme', theme);
+document.querySelectorAll('.project-card').forEach((c, i) => {
+  // Cards stagger by row; both cards in the same row reveal together
+  const row = Math.floor(i / 2);
+  c.dataset.flipDelay = row * 90;
+  cardObserver.observe(c);
 });
 
-// Create particles for hero section
-function createParticles() {
-    const particleCount = 50;
-
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-
-        // Random position
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        particle.style.left = `${posX}%`;
-        particle.style.top = `${posY}%`;
-
-        // Random size
-        const size = Math.random() * 5 + 2;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-
-        // Random color
-        const colors = [
-            'rgba(99, 102, 241, 0.7)',
-            'rgba(139, 92, 246, 0.7)',
-            'rgba(236, 72, 153, 0.7)',
-            'rgba(244, 63, 94, 0.7)',
-            'rgba(6, 182, 212, 0.7)'
-        ];
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.backgroundColor = color;
-
-        // Random animation duration
-        const duration = Math.random() * 20 + 10;
-        particle.style.animation = `float ${duration}s infinite linear`;
-
-        // Random delay
-        const delay = Math.random() * 5;
-        particle.style.animationDelay = `${delay}s`;
-
-        particlesContainer.appendChild(particle);
-    }
-}
-
-// Check for saved theme preference
-function loadThemePreference() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-theme');
-        themeToggle.classList.add('light-mode');
-        const icon = themeToggle.querySelector('i');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    }
-}
-
-// Typewriter effect
-function typewriter(elementId, text, speed, startDelay) {
-    const el = document.getElementById(elementId);
-    if (!el) return;
-    let i = 0;
-    setTimeout(() => {
-        const timer = setInterval(() => {
-            if (i < text.length) {
-                el.textContent += text[i];
-                i++;
-            } else {
-                clearInterval(timer);
-            }
-        }, speed);
-    }, startDelay);
-}
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    initAnimations();
-    createParticles();
-    loadThemePreference();
-
-    // Typewriter for subtitle (delay so hero fade-in completes first)
-    typewriter('typewriter', 'Web Developer & Software Engineer', 55, 800);
-
-    // Add animation classes to project cards
-    projectCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-        card.classList.add('animate__animated', 'animate__fadeInUp');
+// ---------- Skill chips spring wave ----------
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const chips = e.target.querySelectorAll('.chip.spring');
+    chips.forEach((chip, i) => {
+      setTimeout(() => chip.classList.add('pop'), i * 70);
     });
-});
+    skillObserver.unobserve(e.target);
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.skill-group').forEach(g => skillObserver.observe(g));
+
+// ---------- Count-up stats with burst ----------
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target, 10);
+    const dur = 1200;
+    const start = performance.now();
+    function tick(now) {
+      const t = Math.min(1, (now - start) / dur);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(target * eased) + (t === 1 ? '+' : '');
+      if (t < 1) requestAnimationFrame(tick);
+      else spawnBurst(el);
+    }
+    requestAnimationFrame(tick);
+    statObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num').forEach(el => statObserver.observe(el));
+
+function spawnBurst(el) {
+  const parent = el.parentElement;
+  if (!parent) return;
+  const burst = document.createElement('div');
+  burst.className = 'stat-burst';
+  const rect = el.getBoundingClientRect();
+  const prect = parent.getBoundingClientRect();
+  burst.style.left = (rect.left - prect.left + rect.width / 2) + 'px';
+  burst.style.top = (rect.top - prect.top + rect.height / 2) + 'px';
+  const colors = ['#7dd3fc', '#a78bfa', '#f472b6', '#34d399'];
+  for (let i = 0; i < 14; i++) {
+    const p = document.createElement('span');
+    const angle = (Math.PI * 2 * i) / 14;
+    const dist = 40 + Math.random() * 30;
+    p.style.setProperty('--bx', Math.cos(angle) * dist + 'px');
+    p.style.setProperty('--by', Math.sin(angle) * dist + 'px');
+    p.style.background = colors[i % colors.length];
+    p.style.boxShadow = `0 0 8px ${colors[i % colors.length]}`;
+    p.style.animationDelay = (i * 15) + 'ms';
+    burst.appendChild(p);
+  }
+  parent.style.position = 'relative';
+  parent.appendChild(burst);
+  setTimeout(() => burst.remove(), 1200);
+}
+
+// ---------- Build chessboard ----------
+const cb = document.querySelector('.chessboard');
+if (cb) {
+  for (let r = 0; r < 8; r++) {
+    for (let c = 0; c < 8; c++) {
+      const sq = document.createElement('div');
+      sq.className = ((r + c) % 2 === 0) ? 'light' : 'dark';
+      cb.appendChild(sq);
+    }
+  }
+}
+
+
+// ---------- Periodic re-glitch of hero name ----------
+setInterval(() => {
+  if (document.hidden) return;
+  triggerGlitch();
+}, 9000);

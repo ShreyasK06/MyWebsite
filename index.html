@@ -1,317 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shreyas's Portfolio - Web Developer and Software Engineer">
-    <meta name="keywords" content="portfolio, web development, software engineer, projects">
-    <title>Shreyas K | Portfolio</title>
-    <link rel="icon" type="image/png" href="https://www.google.com/s2/u/0/favicons?domain=https://www.samsung.com/us/">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="index.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shreyas Kakkar — Developer & Builder</title>
+<meta name="description" content="Portfolio of Shreyas Kakkar — software engineer, ML researcher, and builder of interactive tools." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Cursor Glow -->
-    <div class="cursor-glow" id="cursorGlow"></div>
+<!-- Loading screen -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-logo">
+    <svg viewBox="0 0 80 80" width="80" height="80">
+      <circle class="loader-ring" cx="40" cy="40" r="32" fill="none" stroke="url(#loaderGrad)" stroke-width="3" stroke-linecap="round" />
+      <defs>
+        <linearGradient id="loaderGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#7dd3fc"/>
+          <stop offset="50%" stop-color="#a78bfa"/>
+          <stop offset="100%" stop-color="#f472b6"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="loader-mark">SK</div>
+  </div>
+</div>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo">SK</div>
-        <div class="nav-toggle" id="navToggle">
-            <i class="fas fa-bars"></i>
+<!-- Animated background -->
+<div class="bg-gradient" aria-hidden="true">
+  <div class="bg-shift"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="grid-overlay"></div>
+</div>
+
+<!-- Particle canvas -->
+<canvas id="particleCanvas" class="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- Nav -->
+<nav class="nav">
+  <a href="#top" class="nav-brand">
+    <span class="brand-mark">SK</span>
+    <span class="brand-name">Shreyas Kakkar</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <span class="nav-underline" id="navUnderline"></span>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle menu" id="navToggle">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Hero -->
+<header id="top" class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag reveal">
+      <span class="pulse-dot"></span>
+      <span>Available for opportunities</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="line reveal">Hi, I'm <span class="grad-text glitch" data-text="Shreyas Kakkar">Shreyas Kakkar</span>.</span>
+      <span class="line reveal">I build things that <span class="type-target" id="typeTarget">think</span>.</span>
+    </h1>
+    <p class="hero-sub reveal">
+      Software engineer, ML researcher, and relentless tinkerer. I build interactive tools,
+      computer vision systems, and machine learning models that solve real problems — from
+      a collaborative math whiteboard to sentiment-driven stock prediction.
+    </p>
+    <div class="hero-cta reveal">
+      <a href="#projects" class="btn btn-primary">
+        View Projects
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://github.com/shreyask06" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 016.79.65C18.28 3.9 19.25 4.2 19.25 4.2c.62 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.4-5.25 5.69.41.35.77 1.05.77 2.12v3.14c0 .31.21.68.79.56A11.5 11.5 0 0023.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="stat"><span class="stat-num" data-target="20">0</span><span class="stat-label">Projects Shipped</span></div>
+      <div class="stat"><span class="stat-num" data-target="10">0</span><span class="stat-label">Languages</span></div>
+      <div class="stat"><span class="stat-num" data-target="5">0</span><span class="stat-label">Years Coding</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</header>
+
+<!-- Projects -->
+<section id="projects" class="section">
+  <div class="section-head">
+    <div class="eyebrow">01 — Selected Work</div>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">A curated selection, ordered by impact and complexity.</p>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- MathBoard - featured -->
+    <article class="project-card featured">
+      <div class="card-badge">Featured</div>
+      <div class="card-visual">
+        <div class="visual-mathboard">
+          <div class="mb-toolbar"><span></span><span></span><span></span></div>
+          <div class="mb-canvas">
+            <div class="mb-eq">∫<sub>0</sub><sup>π</sup> sin(x) dx = 2</div>
+            <div class="mb-eq mb-eq-2">f'(x) = lim<sub>h→0</sub> [f(x+h) − f(x)] / h</div>
+            <div class="mb-scribble"></div>
+          </div>
         </div>
-        <ul class="nav-links">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-        <div class="theme-toggle" id="themeToggle">
-            <i class="fas fa-moon"></i>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">MathBoard</h3>
+        <div class="card-reveal"><div class="card-reveal-inner">
+          <div class="tech-row">
+            <span class="chip">React</span><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">R</span><span class="chip">Render</span>
+          </div>
+          <p class="card-desc">A collaborative digital whiteboard purpose-built for mathematics. Combines a React frontend with a Python/R backend for equation rendering, symbolic computation, and real-time drawing.</p>
+          <a class="card-link" href="https://github.com/ShreyasK06/MathBoard" target="_blank" rel="noopener">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div></div>
+      </div>
+    </article>
+
+    <!-- Chess -->
+    <article class="project-card">
+      <div class="card-visual visual-chess"><div class="chessboard"></div></div>
+      <div class="card-body">
+        <h3 class="card-title">Chess Game</h3>
+        <div class="card-reveal"><div class="card-reveal-inner">
+          <div class="tech-row"><span class="chip">JavaScript</span><span class="chip">Node.js</span></div>
+          <p class="card-desc">A fully-playable chess engine with move validation, check/checkmate detection, and a clean interactive UI built from scratch with a Node.js multiplayer backend.</p>
+          <a class="card-link" href="https://github.com/ShreyasK06/ChessNodeJS" target="_blank" rel="noopener">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div></div>
+      </div>
+    </article>
+
+    <!-- Sentiment Stock -->
+    <article class="project-card">
+      <div class="card-visual visual-stock">
+        <svg viewBox="0 0 200 100" preserveAspectRatio="none">
+          <defs><linearGradient id="stockGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.6"/><stop offset="100%" stop-color="#7dd3fc" stop-opacity="0"/></linearGradient></defs>
+          <path class="stock-fill" d="M0,80 L20,70 L40,75 L60,50 L80,55 L100,35 L120,40 L140,25 L160,30 L180,15 L200,20 L200,100 L0,100 Z" fill="url(#stockGrad)"/>
+          <path class="stock-line" d="M0,80 L20,70 L40,75 L60,50 L80,55 L100,35 L120,40 L140,25 L160,30 L180,15 L200,20" fill="none" stroke="#7dd3fc" stroke-width="1.5"/>
+        </svg>
+        <div class="stock-badge">60% acc.</div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Sentiment Stock Analysis</h3>
+        <div class="card-reveal"><div class="card-reveal-inner">
+          <div class="tech-row"><span class="chip">Python</span><span class="chip">LightGBM</span><span class="chip">NLP</span><span class="chip">Pandas</span></div>
+          <p class="card-desc">A LightGBM classifier fusing news/social sentiment with statistical market features to predict short-term price direction — ~60% accuracy on held-out data.</p>
+          <a class="card-link" href="https://github.com/shreyask06" target="_blank" rel="noopener">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div></div>
+      </div>
+    </article>
+
+    <!-- RPS CV -->
+    <article class="project-card">
+      <div class="card-visual visual-rps">
+        <div class="rps-icons"><div class="rps-icon">✊</div><div class="rps-icon">✋</div><div class="rps-icon">✌️</div></div>
+        <div class="rps-scanline"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Rock Paper Scissors CV</h3>
+        <div class="card-reveal"><div class="card-reveal-inner">
+          <div class="tech-row"><span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">MediaPipe</span></div>
+          <p class="card-desc">Real-time Rock Paper Scissors through your webcam. Hand-landmark detection recognizes gestures, with an AI opponent that adapts to your play patterns.</p>
+          <a class="card-link" href="https://github.com/shreyask06" target="_blank" rel="noopener">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div></div>
+      </div>
+    </article>
+
+    <!-- Delphi -->
+    <article class="project-card">
+      <div class="card-visual visual-delphi">
+        <div class="delphi-chat">
+          <div class="chat-bubble user">How much can I save this month?</div>
+          <div class="chat-bubble bot">Based on your spending, ~$412 is realistic.</div>
         </div>
-    </nav>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Delphi</h3>
+        <div class="card-reveal"><div class="card-reveal-inner">
+          <div class="tech-row"><span class="chip">Python</span><span class="chip">LLM</span><span class="chip">Finance</span></div>
+          <p class="card-desc">A personal finance coach that ingests transaction data and delivers actionable, personalized budgeting and investment guidance — conversational and context-aware.</p>
+          <a class="card-link" href="https://github.com/shreyask06" target="_blank" rel="noopener">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div></div>
+      </div>
+    </article>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="particles" id="particles"></div>
-        <div class="hero-content">
-            <h1 class="animate__animated animate__fadeInDown" data-text="SHREYAS K">SHREYAS K</h1>
-            <p class="subtitle animate__animated animate__fadeInUp"><span id="typewriter"></span><span class="typewriter-cursor">|</span></p>
-            <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-1s">
-                <a href="#projects" class="btn primary-btn">View Projects</a>
-                <a href="#contact" class="btn secondary-btn">Contact Me</a>
-            </div>
+    <!-- FridgeChef -->
+    <article class="project-card">
+      <div class="card-visual visual-fridge">
+        <div class="fridge-emoji">🥕🍅🧀</div>
+        <div class="fridge-arrow">→</div>
+        <div class="fridge-emoji">🍝</div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Fridge Chef</h3>
+        <div class="card-reveal"><div class="card-reveal-inner">
+          <div class="tech-row"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">AI</span></div>
+          <p class="card-desc">A cross-platform mobile app that turns whatever's in your fridge into recipes. Snap or list ingredients and get creative meal suggestions in seconds.</p>
+          <a class="card-link" href="https://github.com/ShreyasK06/FridgeChef" target="_blank" rel="noopener">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div></div>
+      </div>
+    </article>
+
+    <!-- Camera Whiteboard -->
+    <article class="project-card">
+      <div class="card-visual visual-camwb"><div class="camwb-frame"><div class="camwb-hand">✍️</div></div></div>
+      <div class="card-body">
+        <h3 class="card-title">Camera Whiteboard</h3>
+        <div class="card-reveal"><div class="card-reveal-inner">
+          <div class="tech-row"><span class="chip">Python</span><span class="chip">OpenCV</span></div>
+          <p class="card-desc">Draw in the air with your finger and watch strokes appear on-screen. Tracks fingertips through the webcam for a natural, marker-free whiteboard experience.</p>
+          <a class="card-link" href="https://github.com/ShreyasK06/cameraWhiteboardPy" target="_blank" rel="noopener">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div></div>
+      </div>
+    </article>
+
+    <!-- License Plate -->
+    <article class="project-card">
+      <div class="card-visual visual-plate">
+        <div class="plate">SK-06-CV</div>
+        <div class="plate-scan"></div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">License Plate Recognition</h3>
+        <div class="card-reveal"><div class="card-reveal-inner">
+          <div class="tech-row"><span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">OCR</span></div>
+          <p class="card-desc">Detects and reads vehicle license plates from images and video streams using contour detection, image preprocessing, and OCR.</p>
+          <a class="card-link" href="https://github.com/ShreyasK06/LincensePlateRecogPy" target="_blank" rel="noopener">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div></div>
+      </div>
+    </article>
+
+    <!-- Stock Tips -->
+    <article class="project-card">
+      <div class="card-visual visual-tips">
+        <div class="ticker">
+          <span class="up">▲ AAPL +1.2%</span>
+          <span class="down">▼ TSLA −0.8%</span>
+          <span class="up">▲ NVDA +3.4%</span>
         </div>
-    </section>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Stock Tips</h3>
+        <div class="card-reveal"><div class="card-reveal-inner">
+          <div class="tech-row"><span class="chip">JavaScript</span><span class="chip">APIs</span></div>
+          <p class="card-desc">A market analysis dashboard surfacing daily stock recommendations by pulling live market data through a rules-based scoring engine.</p>
+          <a class="card-link" href="https://github.com/shreyask06" target="_blank" rel="noopener">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div></div>
+      </div>
+    </article>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm a passionate web developer and software engineer with a focus on creating interactive and user-friendly applications. I enjoy building projects that solve real-world problems and provide great user experiences.</p>
-                    <div class="skills">
-                        <h3>My Skills</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">Git</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Checker AI -->
+    <article class="project-card">
+      <div class="card-visual visual-checkers"><div class="checkerboard"></div></div>
+      <div class="card-body">
+        <h3 class="card-title">Checker AI</h3>
+        <div class="card-reveal"><div class="card-reveal-inner">
+          <div class="tech-row"><span class="chip">Python</span><span class="chip">Minimax</span><span class="chip">AI</span></div>
+          <p class="card-desc">A Checkers-playing AI powered by Minimax with alpha-beta pruning. Evaluates thousands of positions per move to play at a strong tactical level.</p>
+          <a class="card-link" href="https://github.com/ShreyasK06/checkerAiPy" target="_blank" rel="noopener">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="section">
+  <div class="section-head">
+    <div class="eyebrow">02 — Toolbox</div>
+    <h2 class="section-title">Skills & Tech</h2>
+    <p class="section-sub">The stack I reach for when building.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Languages</h4>
+      <div class="skill-chips">
+        <span class="chip lg spring">Python</span>
+        <span class="chip lg spring">JavaScript</span>
+        <span class="chip lg spring">TypeScript</span>
+        <span class="chip lg spring">Java</span>
+        <span class="chip lg spring">Dart</span>
+        <span class="chip lg spring">R</span>
+        <span class="chip lg spring">HTML/CSS</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>ML & Data</h4>
+      <div class="skill-chips">
+        <span class="chip lg spring">PyTorch</span>
+        <span class="chip lg spring">LightGBM</span>
+        <span class="chip lg spring">OpenCV</span>
+        <span class="chip lg spring">MediaPipe</span>
+        <span class="chip lg spring">Pandas</span>
+        <span class="chip lg spring">NumPy</span>
+        <span class="chip lg spring">scikit-learn</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Web & Mobile</h4>
+      <div class="skill-chips">
+        <span class="chip lg spring">React</span>
+        <span class="chip lg spring">Node.js</span>
+        <span class="chip lg spring">Flask</span>
+        <span class="chip lg spring">Flutter</span>
+        <span class="chip lg spring">REST APIs</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Tools</h4>
+      <div class="skill-chips">
+        <span class="chip lg spring">Git</span>
+        <span class="chip lg spring">Docker</span>
+        <span class="chip lg spring">Render</span>
+        <span class="chip lg spring">Linux</span>
+        <span class="chip lg spring">GitHub Actions</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="section">
+  <div class="section-head">
+    <div class="eyebrow">03 — About</div>
+    <h2 class="section-title">A bit about me</h2>
+  </div>
+  <div class="about-wrap">
+    <div class="about-copy">
+      <p>
+        I'm a software engineer and ML researcher who loves shipping things that feel
+        alive — tools that see, think, or collaborate. My work spans computer vision,
+        machine learning, full-stack web, and mobile.
+      </p>
+      <p>
+        Right now I'm doing summer research on machine learning models for milling
+        surface-quality prediction, alongside building side projects like MathBoard
+        (a collaborative math whiteboard) and Delphi (a personal-finance coach).
+      </p>
+      <p>
+        Outside of code: chess, guitar, and finding excuses to draw diagrams on
+        whiteboards (which is how MathBoard started).
+      </p>
+    </div>
+    <div class="about-side">
+      <div class="terminal-card">
+        <div class="term-head">
+          <span></span><span></span><span></span>
+          <span class="term-title">~/shreyas</span>
         </div>
-    </section>
+        <pre class="term-body"><span class="prompt">$</span> whoami
+<span class="out">shreyas kakkar</span>
+<span class="prompt">$</span> cat focus.txt
+<span class="out">ML · CV · Interactive tools</span>
+<span class="prompt">$</span> ls current/
+<span class="out">mathboard/  delphi/  research/</span>
+<span class="prompt">$</span> <span class="cursor">▍</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="game">Games</button>
-                <button class="filter-btn" data-filter="tool">Tools</button>
-                <button class="filter-btn" data-filter="app">Apps</button>
-            </div>
-            <div class="projects-grid">
-                <!-- MathBoard -->
-                <div class="project-card" data-category="tool">
-                    <div class="project-img">
-                        <i class="fas fa-chalkboard"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">MathBoard</h3>
-                        <p class="project-desc">Interactive math whiteboard for visualizing equations and solving problems.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/mathboard/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
+<!-- Contact -->
+<section id="contact" class="section contact">
+  <div class="section-head">
+    <div class="eyebrow">04 — Get in touch</div>
+    <h2 class="section-title">Let's build something.</h2>
+    <p class="section-sub">Open to internships, research, and collaborations.</p>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:shreyaskakkar@gmail.com" class="contact-card">
+      <div class="cc-icon">✉</div>
+      <div class="cc-body">
+        <div class="cc-label">Email</div>
+        <div class="cc-value">shreyaskakkar@gmail.com</div>
+      </div>
+    </a>
+    <a href="https://github.com/shreyask06" target="_blank" rel="noopener" class="contact-card">
+      <div class="cc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 016.79.65C18.28 3.9 19.25 4.2 19.25 4.2c.62 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.4-5.25 5.69.41.35.77 1.05.77 2.12v3.14c0 .31.21.68.79.56A11.5 11.5 0 0023.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+      </div>
+      <div class="cc-body">
+        <div class="cc-label">GitHub</div>
+        <div class="cc-value">@shreyask06</div>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/shreyas-kakkar-872b821a1" target="_blank" rel="noopener" class="contact-card">
+      <div class="cc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452H17.21v-5.569c0-1.328-.024-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.987V9h3.102v1.561h.044c.431-.816 1.484-1.676 3.054-1.676 3.268 0 3.87 2.15 3.87 4.945v6.622zM5.337 7.433a1.8 1.8 0 1 1 0-3.601 1.8 1.8 0 0 1 0 3.601zM6.926 20.452H3.747V9h3.179v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </div>
+      <div class="cc-body">
+        <div class="cc-label">LinkedIn</div>
+        <div class="cc-value">Shreyas Kakkar</div>
+      </div>
+    </a>
+  </div>
+</section>
 
-                <!-- Chess -->
-                <div class="project-card" data-category="game">
-                    <div class="project-img">
-                        <i class="fas fa-chess"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Chess</h3>
-                        <p class="project-desc">Chess puzzles and challenges.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/chessPuzzlesJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
+<footer class="footer">
+</footer>
 
-                <!-- Stock Tip -->
-                <div class="project-card" data-category="app">
-                    <div class="project-img">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Stock Tip</h3>
-                        <p class="project-desc">A stock market analysis and recommendation tool.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/stockTip" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RPSCV -->
-                <div class="project-card" data-category="game">
-                    <div class="project-img">
-                        <i class="fas fa-hand-rock"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">RPSCV</h3>
-                        <p class="project-desc">Rock Paper Scissors with computer vision.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/RPSCV/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Picture-in-Picture -->
-                <div class="project-card" data-category="tool">
-                    <div class="project-img">
-                        <i class="fas fa-image"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Picture-in-Picture</h3>
-                        <p class="project-desc">Implementation of the Picture-in-Picture API.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/pictureInPictureJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Wordle -->
-                <div class="project-card" data-category="game">
-                    <div class="project-img">
-                        <i class="fas fa-font"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Wordle</h3>
-                        <p class="project-desc">Word guessing game inspired by Wordle.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/WordleJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Connect Four -->
-                <div class="project-card" data-category="game">
-                    <div class="project-img">
-                        <i class="fas fa-th"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Connect Four</h3>
-                        <p class="project-desc">Classic Connect Four game built with JavaScript.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/ConnectFourJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tic-Tac-Toe -->
-                <div class="project-card" data-category="game">
-                    <div class="project-img">
-                        <i class="fas fa-hashtag"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Tic-Tac-Toe</h3>
-                        <p class="project-desc">Interactive Tic-Tac-Toe game with JavaScript.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/TicTacToeJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Snake -->
-                <div class="project-card" data-category="game">
-                    <div class="project-img">
-                        <i class="fas fa-snake"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Snake</h3>
-                        <p class="project-desc">Classic Snake game built with JavaScript.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/SnakeJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pong -->
-                <div class="project-card" data-category="game">
-                    <div class="project-img">
-                        <i class="fas fa-table-tennis"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Pong</h3>
-                        <p class="project-desc">Classic Pong game implementation.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/PongJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Infinite Scroll -->
-                <div class="project-card" data-category="tool">
-                    <div class="project-img">
-                        <i class="fas fa-scroll"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Infinite Scroll</h3>
-                        <p class="project-desc">Demonstration of infinite scrolling technique.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/infiniteScrollJS/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Movie Search -->
-                <div class="project-card" data-category="app">
-                    <div class="project-img">
-                        <i class="fas fa-film"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Movie Search</h3>
-                        <p class="project-desc">Movie search application built with React.</p>
-                        <div class="project-links">
-                            <a href="https://shreyask06.github.io/movieSearchReactJS" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <p><a href="mailto:shreyaskakkar@gmail.com">shreyaskakkar@gmail.com</a></p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <p><a href="https://github.com/shreyask06" target="_blank" rel="noopener noreferrer">github.com/shreyask06</a></p>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn primary-btn submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Shreyas K. All Rights Reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/shreyask06" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="mailto:shreyaskakkar@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
-
 </html>
