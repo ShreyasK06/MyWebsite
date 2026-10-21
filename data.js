@@ -110,6 +110,7 @@ window.SITE = {
       ],
       tech: ['Python', 'PyTorch', 'FinBERT', 'Transformers', 'Next.js'],
       link: 'https://github.com/ShreyasK06/SentimentStockPredictorModel',
+      demo: 'https://shreyask06.github.io/SentimentStockPredictorModel/',
     },
     {
       title: 'Earnings Whisper: Grounded Trading Signals From Earnings Filings',
@@ -148,6 +149,7 @@ window.SITE = {
       ],
       tech: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Firebase'],
       link: 'https://github.com/ShreyasK06/personal-health-coach',
+      demo: 'https://shreyask06.github.io/personal-health-coach/?demo=1',
     },
     {
       title: 'LLM Attribution: Which Model Wrote This Text?',
@@ -169,9 +171,11 @@ window.SITE = {
         'Google Cloud Vision detects the ingredients, which you can edit as chips before generating.',
         'Gemini 2.5 Flash returns three full recipes with timings and steps.',
         'FastAPI backend with a web frontend and a Flutter Android app, covered by 17 tests.',
+        'The live demo runs on sample data (no API calls); run the backend locally for real detection.',
       ],
       tech: ['Python', 'FastAPI', 'Flutter', 'Gemini', 'Cloud Vision'],
       link: 'https://github.com/ShreyasK06/FridgeChef',
+      demo: 'https://shreyask06.github.io/FridgeChef/',
     },
     {
       title: 'Camera Whiteboard: Draw in the Air With Your Finger',
@@ -180,20 +184,24 @@ window.SITE = {
       bullets: [
         'MediaPipe hand tracking turns your fingertip into a pen.',
         'Strokes appear on-screen as you draw in the air, with a colour palette.',
+        'Runs on the desktop or in the browser: a Streamlit app streams your webcam over WebRTC.',
       ],
-      tech: ['Python', 'OpenCV', 'MediaPipe'],
+      tech: ['Python', 'OpenCV', 'MediaPipe', 'Streamlit'],
       link: 'https://github.com/ShreyasK06/cameraWhiteboardPy',
+      demo: 'https://shreyask06-ai-whiteboard.streamlit.app',
     },
     {
-      title: 'License Plate Recognition: Reading Plates From Images and Video',
+      title: 'License Plate Recognition: Finding and Reading Plates in Photos',
       name: 'License Plate Recognition', colors: ['#2dd4bf', '#134e4a'], visual: 'plate',
-      desc: 'Detects and reads vehicle license plates from images and video streams.',
+      desc: 'Locates the plate in a car photo with classical image processing, then reads it with Tesseract OCR.',
       bullets: [
-        'Contour detection and image preprocessing to isolate the plate.',
-        'OCR to read the characters.',
+        'Otsu thresholding and connected-region filtering (aspect ratio and area) isolate plate candidates.',
+        'The sharpened crop is upscaled 6x and read in three Tesseract modes, keeping the highest-confidence result.',
+        'A Streamlit app shows the candidates, the OCR crop and the confidence score.',
       ],
-      tech: ['Python', 'OpenCV', 'OCR'],
+      tech: ['Python', 'scikit-image', 'OpenCV', 'Tesseract', 'Streamlit'],
       link: 'https://github.com/ShreyasK06/LincensePlateRecogPy',
+      demo: 'https://shreyask06-plate-reader.streamlit.app',
     },
     {
       title: 'Stock Tips: A Real-Time Market Dashboard With AI Analysis',
@@ -213,10 +221,11 @@ window.SITE = {
       desc: 'A Checkers game with an AI opponent powered by the Minimax algorithm.',
       bullets: [
         'Minimax search at depth 3 over every legal move, including forced captures.',
-        'Pygame interface for playing against the computer.',
+        'Pygame interface for playing against the computer, compiled to WebAssembly with pygbag so it runs in the browser.',
       ],
-      tech: ['Python', 'Pygame', 'Minimax'],
+      tech: ['Python', 'Pygame', 'Minimax', 'pygbag'],
       link: 'https://github.com/ShreyasK06/checkerAiPy',
+      demo: 'https://shreyask06.github.io/checkerAiPy/',
     },
   ],
 };
