@@ -201,7 +201,7 @@ window.SITE = {
       ],
       tech: ['Python', 'scikit-image', 'OpenCV', 'Tesseract', 'Streamlit'],
       link: 'https://github.com/ShreyasK06/LincensePlateRecogPy',
-      demo: 'https://shreyask06-plate-reader.streamlit.app',
+      demo: 'https://shreyask06-plate-detection.streamlit.app/',
     },
     {
       title: 'Stock Tips: A Real-Time Market Dashboard With AI Analysis',
