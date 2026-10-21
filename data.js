@@ -7,32 +7,32 @@ window.SITE = {
     name: 'Shreyas Kakkar',
     // Typewriter cycle in the hero
     roles: ['Shreyas Kakkar', 'ML Engineer', 'Problem Solver', 'Code. Ship. Repeat.'],
-    tagline: 'Software engineer & ML researcher',
+    tagline: 'AI Engineering student & ML researcher',
     summary:
-      'I build interactive tools, computer vision systems, and machine learning models that solve real problems — from a collaborative math whiteboard to sentiment-driven stock prediction.',
+      'I build machine learning systems and the tools around them: sentiment-driven stock forecasting, a math whiteboard that reads handwriting, and a retrieval pipeline for earnings calls.',
     email: 'shreyaskakkar@gmail.com',
-    github: 'https://github.com/shreyask06',
+    github: 'https://github.com/ShreyasK06',
     linkedin: 'https://www.linkedin.com/in/shreyas-kakkar-872b821a1',
     introWords: 'ERROR 404: Conventional developer not found.',
   },
 
   about: {
     paragraph:
-      "I'm a software engineer and ML researcher who loves shipping things that feel alive — tools that see, think, or collaborate. My work spans computer vision, machine learning, full-stack web, and mobile. Right now I'm doing research on machine learning models for milling surface-quality prediction, alongside side projects like MathBoard and Delphi.",
+      "I'm an AI Engineering student at Penn State (class of 2028) who likes building machine learning systems end to end, from the model to the interface people actually use. My research applies acoustic-emission signal processing and CNNs to classify CNC milling parameters, and my projects range from sentiment-driven stock forecasting to a whiteboard that recognises handwritten math.",
     details: [
       { icon: 'mail', label: 'Email', value: 'shreyaskakkar@gmail.com' },
-      { icon: 'github', label: 'GitHub', value: '@shreyask06' },
+      { icon: 'github', label: 'GitHub', value: '@ShreyasK06' },
       { icon: 'school', label: 'Education', value: 'AI Engineering, Penn State' },
     ],
     areas: [
-      'Machine Learning', 'Computer Vision', 'Full-Stack Web', 'Interactive Tools',
-      'Python', 'React', 'Flutter', 'Research',
+      'Machine Learning', 'Computer Vision', 'NLP', 'Time-Series Forecasting',
+      'Signal Processing', 'Full-Stack Web', 'Python', 'React',
     ],
     sideTitle: 'Education & Research',
     side: [
-      { title: 'B.S. AI Engineering', place: 'The Pennsylvania State University', left: 'Junior', right: 'In progress' },
-      { title: 'Undergraduate ML Research', place: 'Dept. of Industrial Engineering, Penn State', left: 'Milling surface-quality prediction', right: 'Ongoing' },
-      { title: 'FRC Robotics', place: 'FIRST Robotics Competition', left: 'World Championship qualifier', right: '' },
+      { title: 'B.Eng. AI Engineering', place: 'The Pennsylvania State University', left: 'Sep 2024 to May 2028', right: 'In progress' },
+      { title: 'Undergraduate ML Research', place: 'Penn State, Dept. of Science and Technology', left: 'CNC milling parameter classification: CWT scalograms + CNNs', right: 'Apr 2026 to now' },
+      { title: 'Certifications', place: 'Oracle OCI Generative AI Professional, Oracle OCI AI Foundations, Google AI Professional', left: '2025', right: '' },
     ],
   },
 
@@ -42,6 +42,7 @@ window.SITE = {
       items: [
         { name: 'Python', icon: 'python' }, { name: 'JavaScript', icon: 'javascript' },
         { name: 'TypeScript', icon: 'typescript' }, { name: 'Java', icon: 'java' },
+        { name: 'C++', icon: 'cplusplus' }, { name: 'SQL', icon: '' },
         { name: 'Dart', icon: 'dart' }, { name: 'R', icon: 'r' },
         { name: 'HTML / CSS', icon: 'html5' },
       ],
@@ -49,7 +50,8 @@ window.SITE = {
     {
       id: 'ml', label: 'ML & Data', icon: 'brain',
       items: [
-        { name: 'PyTorch', icon: 'pytorch' }, { name: 'LightGBM', icon: '' },
+        { name: 'PyTorch', icon: 'pytorch' }, { name: 'TensorFlow', icon: 'tensorflow' },
+        { name: 'LightGBM', icon: '' },
         { name: 'OpenCV', icon: 'opencv' }, { name: 'MediaPipe', icon: '' },
         { name: 'Pandas', icon: 'pandas' }, { name: 'NumPy', icon: 'numpy' },
         { name: 'scikit-learn', icon: 'scikitlearn' },
@@ -59,7 +61,7 @@ window.SITE = {
       id: 'web', label: 'Web & Mobile', icon: 'layout',
       items: [
         { name: 'React', icon: 'react' }, { name: 'Node.js', icon: 'nodejs' },
-        { name: 'Flask', icon: 'flask' }, { name: 'Flutter', icon: 'flutter' },
+        { name: 'FastAPI', icon: 'fastapi' }, { name: 'Flutter', icon: 'flutter' },
         { name: 'REST APIs', icon: '' },
       ],
     },
