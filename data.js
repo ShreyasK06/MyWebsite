@@ -12,7 +12,7 @@ window.SITE = {
       'I build machine learning systems and the tools around them: sentiment-driven stock forecasting, a math whiteboard that reads handwriting, and a retrieval pipeline for earnings calls.',
     email: 'shreyaskakkar@gmail.com',
     github: 'https://github.com/ShreyasK06',
-    linkedin: 'https://www.linkedin.com/in/shreyas-kakkar-872b821a1',
+    linkedin: 'https://www.linkedin.com/in/shreyaskakkar/',
     introWords: 'ERROR 404: Conventional developer not found.',
   },
 
