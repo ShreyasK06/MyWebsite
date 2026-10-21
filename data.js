@@ -1,0 +1,222 @@
+/*
+ * Site content. Edit this file to update the page (resume details go here).
+ * Rendered by script.js into the About, Skills and Projects sections.
+ */
+window.SITE = {
+  profile: {
+    name: 'Shreyas Kakkar',
+    // Typewriter cycle in the hero
+    roles: ['Shreyas Kakkar', 'ML Engineer', 'Problem Solver', 'Code. Ship. Repeat.'],
+    tagline: 'Software engineer & ML researcher',
+    summary:
+      'I build interactive tools, computer vision systems, and machine learning models that solve real problems — from a collaborative math whiteboard to sentiment-driven stock prediction.',
+    email: 'shreyaskakkar@gmail.com',
+    github: 'https://github.com/shreyask06',
+    linkedin: 'https://www.linkedin.com/in/shreyas-kakkar-872b821a1',
+    introWords: 'ERROR 404: Conventional developer not found.',
+  },
+
+  about: {
+    paragraph:
+      "I'm a software engineer and ML researcher who loves shipping things that feel alive — tools that see, think, or collaborate. My work spans computer vision, machine learning, full-stack web, and mobile. Right now I'm doing research on machine learning models for milling surface-quality prediction, alongside side projects like MathBoard and Delphi.",
+    details: [
+      { icon: 'mail', label: 'Email', value: 'shreyaskakkar@gmail.com' },
+      { icon: 'github', label: 'GitHub', value: '@shreyask06' },
+      { icon: 'school', label: 'Education', value: 'AI Engineering, Penn State' },
+    ],
+    areas: [
+      'Machine Learning', 'Computer Vision', 'Full-Stack Web', 'Interactive Tools',
+      'Python', 'React', 'Flutter', 'Research',
+    ],
+    sideTitle: 'Education & Research',
+    side: [
+      { title: 'B.S. AI Engineering', place: 'The Pennsylvania State University', left: 'Junior', right: 'In progress' },
+      { title: 'Undergraduate ML Research', place: 'Dept. of Industrial Engineering, Penn State', left: 'Milling surface-quality prediction', right: 'Ongoing' },
+      { title: 'FRC Robotics', place: 'FIRST Robotics Competition', left: 'World Championship qualifier', right: '' },
+    ],
+  },
+
+  skills: [
+    {
+      id: 'languages', label: 'Languages', icon: 'code',
+      items: [
+        { name: 'Python', icon: 'python' }, { name: 'JavaScript', icon: 'javascript' },
+        { name: 'TypeScript', icon: 'typescript' }, { name: 'Java', icon: 'java' },
+        { name: 'Dart', icon: 'dart' }, { name: 'R', icon: 'r' },
+        { name: 'HTML / CSS', icon: 'html5' },
+      ],
+    },
+    {
+      id: 'ml', label: 'ML & Data', icon: 'brain',
+      items: [
+        { name: 'PyTorch', icon: 'pytorch' }, { name: 'LightGBM', icon: '' },
+        { name: 'OpenCV', icon: 'opencv' }, { name: 'MediaPipe', icon: '' },
+        { name: 'Pandas', icon: 'pandas' }, { name: 'NumPy', icon: 'numpy' },
+        { name: 'scikit-learn', icon: 'scikitlearn' },
+      ],
+    },
+    {
+      id: 'web', label: 'Web & Mobile', icon: 'layout',
+      items: [
+        { name: 'React', icon: 'react' }, { name: 'Node.js', icon: 'nodejs' },
+        { name: 'Flask', icon: 'flask' }, { name: 'Flutter', icon: 'flutter' },
+        { name: 'REST APIs', icon: '' },
+      ],
+    },
+    {
+      id: 'tools', label: 'Tools', icon: 'wrench',
+      items: [
+        { name: 'Git', icon: 'git' }, { name: 'Docker', icon: 'docker' },
+        { name: 'Render', icon: '' }, { name: 'Linux', icon: 'linux' },
+        { name: 'GitHub Actions', icon: 'githubactions' },
+      ],
+    },
+  ],
+
+  // colors: [light, dark] feed the card's radial gradient; visual picks the CSS preview.
+  projects: [
+    {
+      title: 'MathBoard: Handwritten Math, Solved Step by Step',
+      name: 'MathBoard', colors: ['#6a5acd', '#14235c'], visual: 'mathboard',
+      desc: 'Draw an equation on a canvas and get a symbolic solution back.',
+      bullets: [
+        'Handwriting is read by a locally trained CNN, with Gemini as the OCR fallback, then converted to LaTeX.',
+        'A SymPy solver is cross-checked by an R Plumber/Ryacas sidecar, with a check mark when the two agree.',
+        'An R Shiny dashboard shows live request stats and the classifier\'s confusion matrix.',
+      ],
+      tech: ['React', 'Python', 'FastAPI', 'SymPy', 'R'],
+      link: 'https://github.com/ShreyasK06/mathboard',
+      demo: 'https://shreyask06.github.io/mathboard/',
+    },
+    {
+      title: 'Chess Puzzles: A Browser Chess App With a Custom Engine',
+      name: 'Chess Puzzles', colors: ['#f87171', '#7f1d1d'], visual: 'chess',
+      desc: 'A browser chess app with five AI difficulty levels, daily puzzles, Chess960 and a position playground.',
+      bullets: [
+        'Custom-written JavaScript chess engine, with no build step and fully client-side.',
+        'Daily puzzles checked against stored solutions, plus Chess960 and one-click openings.',
+      ],
+      tech: ['JavaScript', 'Chess Engine', 'Web Workers'],
+      link: 'https://github.com/ShreyasK06/chessPuzzlesJS',
+      demo: 'https://shreyask06.github.io/chessPuzzlesJS/',
+    },
+    {
+      title: 'Sentiment Stock Analysis: Financial News Sentiment and Forecasting',
+      name: 'Sentiment Stock Analysis', colors: ['#38bdf8', '#0c4a6e'], visual: 'stock',
+      desc: 'Financial-news sentiment models feeding a multi-horizon forecasting pipeline, evaluated against majority-class baselines.',
+      bullets: [
+        'Fine-tuned DistilBERT sentiment classifier: 87% validation accuracy, 82.5% on the held-out test split and 85.4% in 5-fold CV.',
+        'FinBERT-scored headlines feed a Temporal Fusion Transformer with 1, 3, 5 and 7-day quantile forecasts.',
+      ],
+      tech: ['Python', 'PyTorch', 'FinBERT', 'Transformers', 'Next.js'],
+      link: 'https://github.com/ShreyasK06/SentimentStockPredictorModel',
+    },
+    {
+      title: 'Earnings Whisper: Grounded Trading Signals From Earnings Filings',
+      name: 'Earnings Whisper', colors: ['#34d399', '#064e3b'], visual: 'whisper',
+      desc: 'A RAG system over SEC 8-K earnings filings that generates cited trading signals and backtests them.',
+      bullets: [
+        'Hybrid retrieval with cross-encoder reranking: Recall@5 of 0.638 on a 47-question golden set.',
+        'LLM signal generation with enforced citations and a faithfulness judge.',
+        'Backtested against realized returns: 48.4% hit rate on 64 directional signals, an honest null result.',
+      ],
+      tech: ['Python', 'RAG', 'Qdrant', 'FastAPI', 'React'],
+      link: 'https://github.com/ShreyasK06/EarningsWhisper',
+      demo: 'https://shreyask06.github.io/EarningsWhisper/',
+    },
+    {
+      title: 'Delphi: A Budgeting and Financial-Literacy App for College Students',
+      name: 'Delphi', colors: ['#f59e0b', '#78350f'], visual: 'delphi',
+      desc: 'A budgeting web app that turns a student\'s own numbers into a plan, with an AI coach grounded in it.',
+      bullets: [
+        'Financial Health Score, budget builder, debt payoff planner (avalanche vs snowball) and savings goals.',
+        'AI coach on NVIDIA Nemotron through a FastAPI backend, plus live market data for the Investing page.',
+        'No bank logins: Supabase auth and a two-minute setup.',
+      ],
+      tech: ['React', 'TypeScript', 'Supabase', 'FastAPI', 'Tailwind'],
+      link: 'https://github.com/ShreyasK06/delphi',
+      demo: 'https://shreyask06.github.io/delphi/',
+    },
+    {
+      title: 'Personal Health Coach: A Whoop-Style Dashboard on Apple Health Data',
+      name: 'Personal Health Coach', colors: ['#e879f9', '#4a044e'], visual: 'health',
+      desc: 'A single-user dashboard that turns Apple Watch data into daily recovery, sleep and strain scores against your own rolling baseline.',
+      bullets: [
+        'Scoring engines for recovery, sleep, strain and training load, written as pure unit-tested functions.',
+        'Acute vs chronic load (ACWR), sleep debt, and a rules-based coach with a pluggable LLM endpoint.',
+        'Reads Health Auto Export data through Firebase, with a synthetic demo mode.',
+      ],
+      tech: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Firebase'],
+      link: 'https://github.com/ShreyasK06/personal-health-coach',
+    },
+    {
+      title: 'LLM Attribution: Which Model Wrote This Text?',
+      name: 'LLM Attribution', colors: ['#facc15', '#713f12'], visual: 'llm',
+      desc: 'A classifier that identifies which of five chat models generated a response, built on the RAID benchmark.',
+      bullets: [
+        'TF-IDF + logistic regression reaches 78.7% test accuracy against 20% chance; TextCNN gets 76.3% and BiLSTM 73.8%.',
+        'Splits by source prompt with cluster-bootstrap confidence intervals, so no prompt leaks between train and test.',
+        'Leave-one-domain-out accuracy drops to about 40-46%, showing how domain-specific the signal is.',
+      ],
+      tech: ['Python', 'PyTorch', 'scikit-learn', 'NLP'],
+      link: 'https://github.com/ShreyasK06/CMPSC448Project1',
+    },
+    {
+      title: 'Fridge Chef: Turn a Photo of Your Fridge Into Dinner',
+      name: 'Fridge Chef', colors: ['#fb923c', '#7c2d12'], visual: 'fridge',
+      desc: 'Take a photo of your fridge and get three recipes back.',
+      bullets: [
+        'Google Cloud Vision detects the ingredients, which you can edit as chips before generating.',
+        'Gemini 2.5 Flash returns three full recipes with timings and steps.',
+        'FastAPI backend with a web frontend and a Flutter Android app, covered by 17 tests.',
+      ],
+      tech: ['Python', 'FastAPI', 'Flutter', 'Gemini', 'Cloud Vision'],
+      link: 'https://github.com/ShreyasK06/FridgeChef',
+    },
+    {
+      title: 'Camera Whiteboard: Draw in the Air With Your Finger',
+      name: 'Camera Whiteboard', colors: ['#a78bfa', '#4c1d95'], visual: 'camwb',
+      desc: 'A marker-free whiteboard driven by your webcam.',
+      bullets: [
+        'MediaPipe hand tracking turns your fingertip into a pen.',
+        'Strokes appear on-screen as you draw in the air, with a colour palette.',
+      ],
+      tech: ['Python', 'OpenCV', 'MediaPipe'],
+      link: 'https://github.com/ShreyasK06/cameraWhiteboardPy',
+    },
+    {
+      title: 'License Plate Recognition: Reading Plates From Images and Video',
+      name: 'License Plate Recognition', colors: ['#2dd4bf', '#134e4a'], visual: 'plate',
+      desc: 'Detects and reads vehicle license plates from images and video streams.',
+      bullets: [
+        'Contour detection and image preprocessing to isolate the plate.',
+        'OCR to read the characters.',
+      ],
+      tech: ['Python', 'OpenCV', 'OCR'],
+      link: 'https://github.com/ShreyasK06/LincensePlateRecogPy',
+    },
+    {
+      title: 'Stock Tips: A Real-Time Market Dashboard With AI Analysis',
+      name: 'Stock Tips', colors: ['#4ade80', '#14532d'], visual: 'tips',
+      desc: 'A market dashboard combining live stock data, economic indicators, crypto tracking and news.',
+      bullets: [
+        'Pulls real-time quotes and market news through Finnhub and other financial APIs.',
+        'AI-powered stock analysis through OpenAI, with Recharts visualizations.',
+      ],
+      tech: ['React', 'Recharts', 'Finnhub', 'OpenAI'],
+      link: 'https://github.com/ShreyasK06/stockTip',
+      demo: 'https://shreyask06.github.io/stockTip/',
+    },
+    {
+      title: 'Checker AI: A Minimax Checkers Opponent',
+      name: 'Checker AI', colors: ['#f472b6', '#831843'], visual: 'checkers',
+      desc: 'A Checkers game with an AI opponent powered by the Minimax algorithm.',
+      bullets: [
+        'Minimax search at depth 3 over every legal move, including forced captures.',
+        'Pygame interface for playing against the computer.',
+      ],
+      tech: ['Python', 'Pygame', 'Minimax'],
+      link: 'https://github.com/ShreyasK06/checkerAiPy',
+    },
+  ],
+};
