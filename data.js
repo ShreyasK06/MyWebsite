@@ -188,7 +188,7 @@ window.SITE = {
       ],
       tech: ['Python', 'OpenCV', 'MediaPipe', 'Streamlit'],
       link: 'https://github.com/ShreyasK06/cameraWhiteboardPy',
-      demo: 'https://shreyask06-ai-whiteboard.streamlit.app',
+      demo: 'https://shreyask06-camerawhiteboard.streamlit.app/',
     },
     {
       title: 'License Plate Recognition: Finding and Reading Plates in Photos',
