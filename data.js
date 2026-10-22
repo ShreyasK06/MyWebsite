@@ -109,7 +109,7 @@ window.SITE = {
       bullets: [
         'Fine-tuned DistilBERT sentiment classifier: 87% validation accuracy, 82.5% on the held-out test split and 85.4% in 5-fold CV.',
         'FinBERT-scored headlines feed a Temporal Fusion Transformer with 1, 3, 5 and 7-day quantile forecasts.',
-        'The live demo is a working tool: paste headlines and the fine-tuned model scores them in your browser through ONNX Runtime.',
+        'The live demo is a stock dashboard: pick stocks to see news sentiment, the model\'s next-session call and the price trend, refreshed from live Finnhub news.',
       ],
       tech: ['Python', 'PyTorch', 'FinBERT', 'Transformers', 'ONNX Runtime', 'Next.js'],
       link: 'https://github.com/ShreyasK06/SentimentStockPredictorModel',
